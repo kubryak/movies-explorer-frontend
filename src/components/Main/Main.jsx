@@ -8,13 +8,13 @@ import './Main.css';
 
 export default function Main() {
   return (
-    <Main>
+    <main className='main'>
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
       <Portfolio />
       <Footer />
-    </Main>
+    </main>
   );
 };

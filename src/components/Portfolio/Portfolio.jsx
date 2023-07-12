@@ -23,7 +23,7 @@ export default function Portfolio() {
         <li className='portfolio__list-item'>
           <a
             className='portfolio__link'
-            href='https://github.com/kubryak/russian-travel'
+            href='https://kubryak.github.io/russian-travel/'
             target='_blank'
             rel="noreferrer"
           >
