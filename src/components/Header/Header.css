@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1140px;
+  padding: 18px 70px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  background-image: url(../../images/logo.svg);
+  background-size: contain;
+}

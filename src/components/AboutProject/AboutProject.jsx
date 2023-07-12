@@ -25,7 +25,7 @@ export default function AboutProject() {
         <p className='about-project__weeks'>
           1 неделя
         </p>
-        <p className='about-project__weeks'>
+        <p className='about-project__weeks about-project__weeks_frontend'>
           4 недели
         </p>
         <span className='about-project__span'>

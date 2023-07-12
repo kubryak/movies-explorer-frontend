@@ -10,10 +10,10 @@ import Register from '../Register/Register';
 import './App.css';
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    <>
+    <div className='page'>
       <Header isLoggedIn={isLoggedIn}></Header>
       <Routes>
         <Route path='/' element={<Main />} />
@@ -23,6 +23,6 @@ export default function App() {
         <Route path='/signin' element={<Login />} />
         <Route path='/signup' element={<Register />} />
       </Routes>
-    </>
+    </div>
   );
 };
