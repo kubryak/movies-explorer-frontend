@@ -1,6 +1,6 @@
 .about-project {
   max-width: 1280px;
-  padding: 110px 70px;
+  padding: 111px 70px 110px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -18,7 +18,7 @@
 .about-project__info {
   padding-top: 70px;
   display: flex;
-  gap: 40px;
+  gap: 53px;
 }
 
 .about-project__block {
@@ -45,12 +45,12 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   row-gap: 14px;
-  margin-top: 110px;
+  margin-top: 111px;
 }
 
 .about-project__weeks {
   margin: 0;
-  padding: 9px 14px;
+  padding: 10px 14px;
   font-size: 14px;
   font-weight: 400;
   line-height: normal;

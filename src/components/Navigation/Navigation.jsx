@@ -8,11 +8,11 @@ export default function Navigation({ isLoggedIn }) {
         {!isLoggedIn ? (
           <>
             <li className="nav-auth__list-item">
-              <Link className='nav-auth__link' to='/signup'>
+              <Link className='link nav-auth__link' to='/signup'>
                 Регистрация
               </Link>
             </li>
-            <li className="nav-auth__list-item">
+            <li className="button nav-auth__list-item">
               <Link className='nav-auth__link nav-auth__link_active' to='/signin'>
                 Войти
               </Link>
