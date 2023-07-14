@@ -29,6 +29,9 @@ export default function Navigation({ isLoggedIn }) {
               <NavLink className='nav-auth__link' to='/saved-movies'>
                 Сохраненные фильмы
               </NavLink>
+              <NavLink className='nav-auth__link' to='/profile'>
+                Аккаунт
+              </NavLink>
             </li>
           </>
         )}

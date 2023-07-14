@@ -10,10 +10,10 @@ import Register from '../Register/Register';
 import './App.css';
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const CARDS = 12;
-  const CARDS_LIKE = 4;
+  const CARDS_LIKE = 3;
   const cards = Array(CARDS).fill(null);
   const likeCards = Array(CARDS_LIKE).fill(null);
 

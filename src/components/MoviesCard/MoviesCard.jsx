@@ -1,6 +1,5 @@
 import Movie from '../../images/movies-card__image.png';
 import './MoviesCard.css';
-import React from 'react';
 
 export default function MoviesCard() {
   return (
