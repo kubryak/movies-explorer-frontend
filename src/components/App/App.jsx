@@ -12,13 +12,28 @@ import './App.css';
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const CARDS = 12;
+  const CARDS_LIKE = 4;
+  const cards = Array(CARDS).fill(null);
+  const likeCards = Array(CARDS_LIKE).fill(null);
+
   return (
     <div className='page'>
       <Header isLoggedIn={isLoggedIn}></Header>
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/movies' element={<Movies />} />
-        <Route path='/saved-movies' element={<SavedMovies />} />
+        <Route path='/movies'
+          element={
+            <Movies
+            cards={cards}
+            />}
+        />
+        <Route path='/saved-movies'
+          element={
+            <SavedMovies
+            cards={likeCards}
+            />}
+        />
         <Route path='/profile' element={<Profile />} />
         <Route path='/signin' element={<Login />} />
         <Route path='/signup' element={<Register />} />
