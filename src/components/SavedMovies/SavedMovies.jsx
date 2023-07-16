@@ -4,6 +4,7 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import './SavedMovies.css';
+import Header from '../Header/Header';
 
 export default function SavedMovies({ cards }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,12 +17,13 @@ export default function SavedMovies({ cards }) {
 
   return (
     <>
+      <Header />
       <section className='saved-movies'>
-      <SearchForm />
+        <SearchForm />
         {
           isLoading ? <Preloader /> : <MoviesCardList cards={cards} />
         }
-        <div className="saved-movies__devider" />
+        <div className='saved-movies__devider' />
       </section>
       <Footer />
     </>

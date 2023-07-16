@@ -14,7 +14,7 @@ export default function Footer() {
               className='link footer__link'
               href='https://practicum.yandex.ru'
               target='_blank'
-              rel="noreferrer"
+              rel='noreferrer'
             >
               Яндекс.Практикум
             </a>
@@ -24,7 +24,7 @@ export default function Footer() {
               className='link footer__link'
               href='https://github.com/kubryak'
               target='_blank'
-              rel="noreferrer"
+              rel='noreferrer'
             >
               Github
             </a>

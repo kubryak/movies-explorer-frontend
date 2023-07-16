@@ -4,6 +4,7 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import './Movies.css';
+import Header from '../Header/Header';
 
 export default function Movies({ cards }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,8 +17,9 @@ export default function Movies({ cards }) {
 
   return (
     <>
+      <Header />
       <section className='movies'>
-      <SearchForm />
+        <SearchForm />
         {
           isLoading ? <Preloader /> : <MoviesCardList cards={cards} />
         }

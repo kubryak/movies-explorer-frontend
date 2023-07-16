@@ -12,7 +12,7 @@ export default function Portfolio() {
             className='link portfolio__link'
             href='https://kubryak.github.io/how-to-learn/'
             target='_blank'
-            rel="noreferrer"
+            rel='noreferrer'
           >
             <p className='portfolio__link-title'>
               Статичный сайт
@@ -25,7 +25,7 @@ export default function Portfolio() {
             className='link portfolio__link'
             href='https://kubryak.github.io/russian-travel/'
             target='_blank'
-            rel="noreferrer"
+            rel='noreferrer'
           >
             <p className='portfolio__link-title'>
               Адаптивный сайт
@@ -38,7 +38,7 @@ export default function Portfolio() {
             className='link portfolio__link'
             href='https://qbrk.nomoreparties.sbs'
             target='_blank'
-            rel="noreferrer"
+            rel='noreferrer'
           >
             <p className='portfolio__link-title'>
               Одностраничное приложение
