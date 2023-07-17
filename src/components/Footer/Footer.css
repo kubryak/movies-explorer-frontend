@@ -42,3 +42,12 @@
 .footer_links-item {
   text-align: right;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    max-width: 768px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+}

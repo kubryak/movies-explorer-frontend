@@ -3,6 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
+import '../Movies/Movies.css'
 import './SavedMovies.css';
 import Header from '../Header/Header';
 
@@ -18,7 +19,7 @@ export default function SavedMovies({ cards }) {
   return (
     <>
       <Header />
-      <section className='saved-movies'>
+      <section className='movies'>
         <SearchForm />
         {
           isLoading ? <Preloader /> : <MoviesCardList cards={cards} />

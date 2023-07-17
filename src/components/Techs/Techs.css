@@ -60,3 +60,37 @@
   box-sizing: border-box;
   display: block;
 }
+
+@media screen and (max-width: 768px) {
+  .techs {
+    max-width: 768px;
+    padding: 0 50px;
+  }
+
+  .techs__title {
+    padding: 94px 0 23px 0;
+  }
+
+  .techs__name {
+    padding-top: 80px;
+  }
+
+  .techs__description {
+    padding-top: 22px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .techs__list {
+    gap: 10px;
+    margin: 0;
+    padding: 83px 0 90px 0;
+  }
+
+  .techs__item {
+    font-size: 12px;
+    padding: 21px 0 10px 0;
+    min-width: 84px;
+    min-height: 57px;
+  }
+}

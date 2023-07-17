@@ -37,3 +37,10 @@
   height: 20px;
   background-image: url(../../images/smalltumb_on.svg);
 }
+
+@media screen and (max-width: 768px) {
+  .checkbox-container {
+    margin-bottom: 51px;
+  }
+
+}

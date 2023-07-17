@@ -5,3 +5,13 @@
   margin: 79px 0 77px;
   padding: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .movies__list {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 80px;
+    margin-bottom: 63px;
+    padding: 0;
+  }
+}

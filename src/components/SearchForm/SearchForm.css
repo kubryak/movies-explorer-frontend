@@ -33,7 +33,7 @@
 
 .search__button {
   margin: 10px 10px 10px 0;
-  padding: 17px 20px;
+  padding: 17px 0px;
   background-color: #2be080;
   border: none;
   border-radius: 5px;
@@ -43,4 +43,12 @@
   font-weight: 500;
   line-height: 18px;
   color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .search__button {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
 }

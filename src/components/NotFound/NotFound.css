@@ -32,3 +32,13 @@
   line-height: normal;
   color: #2be080;
 }
+
+@media screen and (max-width: 768px) {
+  .not-found {
+    max-width: 768px;
+  }
+
+  .not-found__title {
+    margin-top: 407px;
+  }
+}

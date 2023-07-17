@@ -22,3 +22,26 @@
 .movies__load-movies:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .movies {
+    max-width: 768px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .movies__load-movies {
+    margin: 0;
+    padding: 0;
+    width: 708px;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    background: #f9f9f9;
+  }
+
+}

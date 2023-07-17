@@ -9,7 +9,7 @@ import NotFound from '../NotFound/NotFound';
 import './App.css';
 
 export default function App() {
-  const CARDS = 12;
+  const CARDS = 8;
   const CARDS_LIKE = 3;
 
   const cards = Array(CARDS).fill(null);

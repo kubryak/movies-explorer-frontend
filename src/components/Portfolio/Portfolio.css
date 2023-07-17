@@ -54,3 +54,15 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    max-width: 768px;
+    padding: 0 50px 88px;
+  }
+
+  .portfolio__link-title {
+    font-size: 28px;
+  }
+
+}

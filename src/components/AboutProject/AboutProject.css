@@ -70,3 +70,37 @@
   line-height: normal;
   color: #a0a0a0;
 }
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    max-width: 768px;
+    padding: 90px 50px 90px;
+    margin: 0 auto;
+  }
+
+  .about-project__title {
+    padding-bottom: 24px;
+  }
+
+  .about-project__info {
+    gap: 38px;
+  }
+
+  .about-project__block {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .about-project__block-description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__stages {
+    display: grid;
+    grid-template-columns: 1.06fr 4fr;
+    row-gap: 10px;
+    margin-top: 95px;
+  }
+}

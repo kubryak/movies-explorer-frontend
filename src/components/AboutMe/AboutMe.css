@@ -60,3 +60,45 @@
   border-radius: 10px;
   object-fit: cover;
 }
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    max-width: 768px;
+    padding: 90px 50px 92px;
+  }
+
+  .about-me__info {
+    margin-top: 66px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .about-me__info-text {
+    max-width: 364px;
+  }
+
+  .about-me__name {
+    margin-bottom: 18px;
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__job {
+    margin-bottom: 17px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__description {
+    margin-bottom: 70px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__image {
+    width: 255px;
+    height: 307px;
+  }
+
+}

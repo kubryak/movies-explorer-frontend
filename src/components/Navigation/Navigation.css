@@ -8,11 +8,13 @@
   padding: 0;
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 30px;
   list-style: none;
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
+  letter-spacing: -0.5px;
 }
 
 .nav-auth__list_type_login {
