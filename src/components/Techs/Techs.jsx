@@ -10,8 +10,7 @@ export default function Techs() {
         7 технологий
       </h3>
       <p className='techs__description'>
-        На курсе веб-разработки я освоил технологии, которые применил <br />
-        в дипломном проекте.
+        На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
       </p>
       <ul className='techs__list'>
         <li className='techs__item'>HTML</li>

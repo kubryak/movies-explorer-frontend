@@ -1,5 +1,5 @@
 .registration {
-  max-width: 396px;
+  max-width: 390px;
   padding: 0 70px 80px;
   margin: 70px auto 0;
   display: flex;
@@ -15,7 +15,7 @@
 .authorizatin__title {
   margin: 0 0 40px 0;
   padding: 0;
-  max-width: 396px;
+  max-width: 390px;
   font-size: 24px;
   font-weight: 500;
   line-height: normal;
@@ -25,7 +25,7 @@
 .registration__form {
   display: flex;
   flex-direction: column;
-  max-width: 396px;
+  max-width: px;
   width: 100%;
 }
 
@@ -91,5 +91,29 @@
 @media screen and (max-width: 768px) {
   .registration {
     margin-top: 232px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .registration {
+    max-width: 260px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: 56px;
+  }
+
+  .registration__logo {
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .authorizatin__title {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  .registration__buttons {
+    margin-top: 159px;
+    font-size: 12px;
   }
 }

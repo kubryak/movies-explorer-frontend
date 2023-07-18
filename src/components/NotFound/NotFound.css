@@ -42,3 +42,24 @@
     margin-top: 407px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .not-found {
+    max-width: 320px;
+  }
+
+  .not-found__title {
+    margin-top: 330px;
+    font-size: 80px;
+  }
+
+  .not-found__text {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .not-found__button {
+    margin-top: 283px;
+    font-size: 12px;
+  }
+}

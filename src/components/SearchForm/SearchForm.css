@@ -52,3 +52,20 @@
   }
 
 }
+
+@media screen and (max-width: 320px) {
+  .search__input {
+    padding: 15px 0 15px 15px;
+    width: 194px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .search__button {
+    margin: 5px 10px 5px 0;
+    padding: 13px 0px;
+    width: 80px;
+    height: 44px;
+  }
+
+}

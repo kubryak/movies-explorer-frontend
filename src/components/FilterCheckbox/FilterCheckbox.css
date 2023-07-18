@@ -44,3 +44,13 @@
   }
 
 }
+
+@media screen and (max-width: 320px) {
+  .checkbox-container {
+    margin-top: 30px;
+    margin-bottom: 63px;
+    margin-left: 3px;
+    font-size: 11px;
+  }
+
+}

@@ -6,12 +6,27 @@
   padding: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1281px) {
   .movies__list {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-top: 80px;
     margin-bottom: 63px;
-    padding: 0;
+  }
+
+  .movies__list {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 80px;
+    margin-bottom: 63px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .movies__list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 49px;
+    margin-bottom: 32px;
   }
 }

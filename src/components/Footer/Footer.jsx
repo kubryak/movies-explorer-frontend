@@ -7,7 +7,7 @@ export default function Footer() {
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className='footer__container'>
-        <p className='footer__copy'>&copy; {(new Date().getFullYear())}</p>
+        <p className='footer__copy'>&copy;{(new Date().getFullYear())}</p>
         <ul className='footer__links'>
           <li className='footer_links-item'>
             <a

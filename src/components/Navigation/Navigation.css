@@ -55,3 +55,15 @@
   border-radius: 6px;
   margin-left: 11px;
 }
+
+@media screen and (max-width: 320px) {
+  .nav-auth__link_active {
+    padding: 4px 12px;
+  }
+
+  .nav-auth__list {
+    gap: 14px;
+    font-size: 10px;
+    letter-spacing: 0px;
+  }
+}

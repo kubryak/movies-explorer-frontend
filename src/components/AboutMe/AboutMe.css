@@ -102,3 +102,68 @@
   }
 
 }
+
+@media screen and (max-width: 650px) {
+  .about-me__info {
+    margin-top: 60px;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-me__info-text {
+    max-width: 100%;
+  }
+
+  .about-me__image {
+    width: 292px;
+    height: 352px;
+    order: -1;
+    align-self: center;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .about-me {
+    max-width: 320px;
+    padding: 50px 14px 69px;
+  }
+
+  .about-me__title {
+    font-size: 18px;
+    padding-top: 1px;
+    padding-bottom: 28px;
+  }
+
+  .about-me__info {
+    margin-top: 60px;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-me__name {
+    margin-bottom: 19px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .about-me__job {
+    margin-bottom: 21px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__description {
+    margin-bottom: 40px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .about-me__image {
+    width: 292px;
+    height: 352px;
+    order: -1;
+  }
+}

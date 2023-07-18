@@ -104,3 +104,53 @@
     margin-top: 95px;
   }
 }
+
+@media screen and (max-width: 650px) {
+  .about-project__stages {
+    grid-template-columns: 1.1fr 2fr;
+    row-gap: 10px;
+    margin-top: 59px;
+  }
+
+  .about-project__weeks {
+    font-size: 11px;
+  }
+
+  .about-project__span {
+    font-size: 11px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-project {
+    max-width: 320px;
+    padding: 71px 18px 90px;
+  }
+
+  .about-project__title {
+    padding-bottom: 28px;
+    font-size: 18px;
+  }
+
+  .about-project__info {
+    flex-direction: column;
+    padding-top: 62px;
+    gap: 58px;
+  }
+
+  .about-project__block {
+    gap: 17px;
+  }
+
+  .about-project__block-title {
+    font-size: 18px;
+    letter-spacing: -0.7px;
+  }
+
+  .about-project__block-description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+}

@@ -59,7 +59,7 @@
 }
 
 .authorization__buttons {
-  margin-top: 70px;
+  margin-top: 160px;
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -95,6 +95,29 @@
 
   .authorization__buttons {
     margin-top: 159px;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .authorization {
+    margin-top: 56px;
+    padding: 0 30px 80px;
+  }
+
+  .authorization__logo {
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .authorization__buttons {
+    margin-top: 247px;
+    font-size: 12px;
+  }
+
+  .authorization__form {
+    max-width: 260px;
+    width: 100%;
   }
 
 }

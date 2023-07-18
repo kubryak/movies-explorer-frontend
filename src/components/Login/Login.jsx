@@ -22,7 +22,7 @@ export default function Login() {
         <div className='authorization__buttons'>
           <button className='button authorization__button'>Войти</button>
           <p className='authorization__text'>Еще не зарегистрированы?
-            <Link className='link authorization__link' to='/signup'> Зарегистрироваться</Link>
+            <Link className='link authorization__link' to='/signup'> Регистрация</Link>
           </p>
         </div>
       </form>

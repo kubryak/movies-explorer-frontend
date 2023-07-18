@@ -38,3 +38,20 @@
     letter-spacing: -1.6px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .promo {
+    max-width: 320x;
+    width: calc(100% - 14px * 2);
+    min-height: 586px;
+    gap: 212px;
+    padding-bottom: 17px;
+  }
+
+  .promo__title {
+    font-size: 29px;
+    line-height: 37px;
+    max-width: 292px;
+    letter-spacing: -1.1px;
+  }
+}
