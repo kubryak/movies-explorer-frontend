@@ -32,6 +32,12 @@
   background-image: url(../../images/movies-card__like.svg);
   border: none;
   border-radius: 30px;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.movies-card:hover .movies-card__like {
+  opacity: 1;
 }
 
 .movies-card__like_type_active {

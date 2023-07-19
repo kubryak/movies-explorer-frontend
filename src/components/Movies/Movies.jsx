@@ -23,7 +23,7 @@ export default function Movies({ cards }) {
         {
           isLoading ? <Preloader /> : <MoviesCardList cards={cards} />
         }
-        <button className='button movies__load-movies'>Ещё</button>
+        <button type='button' className='button movies__load-movies'>Ещё</button>
       </section>
       <Footer />
     </>

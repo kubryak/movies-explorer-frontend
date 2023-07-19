@@ -10,7 +10,7 @@ export default function FilterCheckbox() {
         id='checkbox'
         name='checkbox'
       />
-      <label className='checkbox-label' for='checkbox'>Короткометражки</label>
+      <label className='checkbox-label' htmlFor='checkbox'>Короткометражки</label>
     </div>
   );
 };

@@ -89,15 +89,3 @@
   background: #2be080;
   animation: preloader-inside-red 1s ease-in-out infinite;
 }
-
-/* @media screen and (max-width: 768px) {
-  .preloader {
-    width: 708px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .preloader {
-    width: 300px;
-  }
-} */

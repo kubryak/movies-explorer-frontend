@@ -11,7 +11,7 @@ export default function SearchForm() {
           placeholder='Фильм'
           name='search-input'
         />
-        <button className='button search__button'>
+        <button type='button' className='button search__button'>
           Поиск
         </button>
       </div>

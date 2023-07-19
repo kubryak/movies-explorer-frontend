@@ -43,7 +43,7 @@
 .profile__input-label {
   margin: 0;
   padding: 0;
-  width: 140px;
+  width: 40px;
   font-size: 11px;
   font-weight: 500;
   line-height: normal;
@@ -52,7 +52,7 @@
 .profile__input {
   margin: 0;
   padding: 0;
-  width: 270px;
+  width: 365px;
   border: none;
   font-size: 11px;
   font-weight: 400;
@@ -68,7 +68,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: calc(220px - 33px);
+  margin-top: calc(173px - 33px);
 }
 
 .profile__button {
