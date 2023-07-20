@@ -17,15 +17,13 @@ export default function Movies({ cards }) {
 
   return (
     <>
-      <Header />
-      <section className='movies'>
+      <main className='movies'>
         <SearchForm />
         {
           isLoading ? <Preloader /> : <MoviesCardList cards={cards} />
         }
         <button type='button' className='button movies__load-movies'>Ещё</button>
-      </section>
-      <Footer />
+      </main>
     </>
   );
 };

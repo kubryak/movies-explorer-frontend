@@ -34,7 +34,7 @@
   position: absolute;
   top: 22px;
   right: 24px;
-  background-image: url('../../images/popup__close-btn.png');
+  background-image: url('../../images/popup__close-button.svg');
   background-color: transparent;
   border: none;
   width: 30px;
@@ -63,11 +63,27 @@
 
 .popup__link {
   text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
 }
 
 .popup__link_type_active {
   border-bottom: 2px solid #000;
   padding-bottom: 4px;
+}
+
+.popup__link_type_acc-btn {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.popup__acc-image {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  margin-left: 11px;
 }
 
 @media screen and (max-width: 320px) {

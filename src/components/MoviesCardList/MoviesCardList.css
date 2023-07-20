@@ -11,18 +11,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-top: 80px;
-    margin-bottom: 63px;
-  }
-
-  .movies__list {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 80px;
-    margin-bottom: 63px;
+    margin-bottom: 43px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 766px) {
   .movies__list {
     grid-template-columns: 1fr;
     gap: 8px;

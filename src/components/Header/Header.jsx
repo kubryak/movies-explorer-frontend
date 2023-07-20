@@ -6,17 +6,15 @@ import './Header.css';
 
 export default function Header() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   function handlePopupClick() {
     setIsOpen(true);
-    document.body.classList.add('no-scroll');
   }
 
   function closePopup() {
     setIsOpen(false);
-    document.body.classList.remove('no-scroll');
   }
 
   useEffect(() => {

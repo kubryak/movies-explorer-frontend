@@ -9,14 +9,14 @@ import Header from '../Header/Header';
 
 export default function Main() {
   return (
-    <main className='main'>
-      <Header />
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
-      <Footer />
-    </main>
+    <>
+      <main className='main'>
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
+    </>
   );
 };

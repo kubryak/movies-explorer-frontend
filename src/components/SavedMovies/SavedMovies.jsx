@@ -18,15 +18,13 @@ export default function SavedMovies({ cards }) {
 
   return (
     <>
-      <Header />
       <section className='movies'>
         <SearchForm />
         {
           isLoading ? <Preloader /> : <MoviesCardList cards={cards} />
         }
-        <div className='saved-movies__devider' />
+        <div className='movies__devider' />
       </section>
-      <Footer />
     </>
   );
 };

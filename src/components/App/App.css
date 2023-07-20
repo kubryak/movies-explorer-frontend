@@ -16,11 +16,12 @@
   -moz-text-size-adjust: 100%;
 }
 
-.no-scroll {
-  overflow: hidden;
+.input:focus {
+  box-shadow: 1px 1px 1px rgba(43, 224, 128, 1);
 }
 
 .input-error {
+  display: block;
   visibility: hidden;
   min-height: 24px;
   font-weight: 400;
@@ -39,6 +40,10 @@
 .link {
   text-decoration: none;
   transition: 0.4s;
+}
+
+.link:visited {
+  color: transparent;
 }
 
 .link:hover {

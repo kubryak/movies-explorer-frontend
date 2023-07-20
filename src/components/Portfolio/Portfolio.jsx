@@ -6,7 +6,7 @@ export default function Portfolio() {
       <h2 className='portfolio__title'>
         Портфолио
       </h2>
-      <ul className='potrfolio__list'>
+      <ul className='portfolio__list'>
         <li className='portfolio__list-item'>
           <a
             className='link portfolio__link'
@@ -36,7 +36,7 @@ export default function Portfolio() {
         <li className='portfolio__list-item'>
           <a
             className='link portfolio__link'
-            href='https://qbrk.nomoreparties.sbs'
+            href='https://github.com/kubryak/react-mesto-api-full-gha'
             target='_blank'
             rel='noreferrer'
           >

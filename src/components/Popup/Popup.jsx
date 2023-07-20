@@ -18,9 +18,9 @@ export default function Popup({ isOpen, onClose }) {
           <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/">Главная</NavLink></li>
           <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/movies">Фильмы</NavLink></li>
           <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/saved-movies">Сохраненные фильмы</NavLink></li>
-          <NavLink className='nav-auth__link nav-auth__link_type_acc-btn' to='/profile'>
+          <NavLink className='popup__link popup__link_type_acc-btn' to='/profile'>
             Аккаунт
-            <img className='nav-auth__acc-image' src={AccountIcon} alt='Иконка аккаунта' />
+            <img className='popup__acc-image' src={AccountIcon} alt='Иконка аккаунта' />
           </NavLink>
         </ul>
       </nav>

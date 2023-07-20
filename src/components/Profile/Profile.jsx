@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Header from '../Header/Header';
 import './Profile.css';
@@ -21,9 +22,8 @@ export default function Profile() {
 
   return (
     <>
-      <Header />
       <section className='profile'>
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h1 className='profile__title'>Привет, Виталий!</h1>
         <form className='profile__form'>
           <div className='profile__input-container'>
             <label className='profile__input-label'>Имя</label>
@@ -59,7 +59,9 @@ export default function Profile() {
           </span>
           <div className='profile__buttons'>
             <button type='submit' className='link profile__button profile__button_type_edit'>Редактировать</button>
-            <button type='submit' className='link profile__button profile__button_type_exit'>Выйти из аккаунта</button>
+            <NavLink className='profile__button profile__button_type_exit' to='/'>
+              Выйти из аккаунта
+            </NavLink>
           </div>
         </form>
       </section>

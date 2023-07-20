@@ -9,7 +9,7 @@ export default function Footer() {
       <div className='footer__container'>
         <p className='footer__copy'>&copy;{(new Date().getFullYear())}</p>
         <ul className='footer__links'>
-          <li className='footer_links-item'>
+          <li className='footer__links-item'>
             <a
               className='link footer__link'
               href='https://practicum.yandex.ru'
@@ -19,7 +19,7 @@ export default function Footer() {
               Яндекс.Практикум
             </a>
           </li>
-          <li className='footer_links-item'>
+          <li className='footer__links-item'>
             <a
               className='link footer__link'
               href='https://github.com/kubryak'

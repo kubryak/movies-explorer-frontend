@@ -3,10 +3,12 @@ import './MoviesCardList.css';
 
 export default function MoviesCardList({ cards }) {
   return (
-    <div className='movies__list'>
-      {cards.map((card, index) => (
-        <MoviesCard key={index} />
-      ))}
-    </div>
+    <section>
+      <ul className='movies__list'>
+        {cards.map((card, index) => (
+          <MoviesCard key={index} />
+        ))}
+      </ul>
+    </section>
   );
 };

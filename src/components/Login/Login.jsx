@@ -25,13 +25,13 @@ export default function Login() {
       <div className='authorization__logo'>
         <Logo />
       </div>
-      <h2 className='authorization__title'>Рады видеть!</h2>
+      <h1 className='authorization__title'>Рады видеть!</h1>
       <form className='authorization__form'>
         <div className='authorization__input-container'>
           <label className='authorization__input-label'>E-mail</label>
           <input
             type='email'
-            className='authorization__input'
+            className='input authorization__input'
             name='email'
             value={email || ''}
             onChange={handleChange}
@@ -46,7 +46,7 @@ export default function Login() {
           <label className='authorization__input-label'>Пароль</label>
           <input
             type='password'
-            className='authorization__input'
+            className='input authorization__input'
             name='password'
             value={password || ''}
             onChange={handleChange}
@@ -61,7 +61,7 @@ export default function Login() {
         <div className='authorization__buttons'>
           <button type='submit' className='button authorization__button'>Войти</button>
           <p className='authorization__text'>Еще не зарегистрированы?
-            <Link className='link authorization__link' to='/signup'> Регистрация</Link>
+            <Link className='authorization__link' to='/signup'> Регистрация</Link>
           </p>
         </div>
       </form>

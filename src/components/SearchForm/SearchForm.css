@@ -31,6 +31,10 @@
   outline: none;
 }
 
+.search__container:focus-within {
+  box-shadow: 1px 1px 1px rgba(43, 224, 128, 1);
+}
+
 .search__button {
   margin: 10px 10px 10px 0;
   padding: 17px 0px;
@@ -43,6 +47,25 @@
   font-weight: 500;
   line-height: 18px;
   color: #fff;
+}
+
+.search__button_type_disabled {
+  margin: 10px 10px 10px 0;
+  padding: 17px 0px;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 52px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: gray;
+  cursor: default;
+}
+
+.search__button_type_disabled:hover {
+  opacity: 1;
 }
 
 @media screen and (max-width: 768px) {

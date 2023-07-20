@@ -86,6 +86,12 @@
 .authorization__link {
   text-decoration: none;
   color: #2be080;
+  transition: 0.4s;
+}
+
+.authorization__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

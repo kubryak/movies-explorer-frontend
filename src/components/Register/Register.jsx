@@ -25,13 +25,13 @@ export default function Register() {
       <div className='registration__logo'>
         <Logo />
       </div>
-      <h2 className='authorization__title'>Добро пожаловать!</h2>
+      <h1 className='registration__title'>Добро пожаловать!</h1>
       <form className='registration__form'>
         <div className='registration__input-container'>
           <label className='registration__input-label'>Имя</label>
           <input
             type='text'
-            className='registration__input'
+            className='input registration__input'
             name='name'
             value={name || ''}
             onChange={handleChange}
@@ -48,7 +48,7 @@ export default function Register() {
           <label className='registration__input-label'>E-mail</label>
           <input
             type='email'
-            className='registration__input'
+            className='input registration__input'
             name='email'
             value={email || ''}
             onChange={handleChange}
@@ -63,12 +63,13 @@ export default function Register() {
           <label className='registration__input-label'>Пароль</label>
           <input
             type='password'
-            className='registration__input'
+            className='input registration__input'
             name='password'
             value={password || ''}
             onChange={handleChange}
             required
             minLength='5'
+            maxLength='10'
             placeholder='Пароль'
           />
           <span className="input-error input-error_active">
@@ -79,7 +80,7 @@ export default function Register() {
         <div className='registration__buttons'>
           <button type='submit' className='button registration__button'>Зарегистрироваться</button>
           <p className='registration__text'>Уже зарегистрированы?
-            <Link className='link registration__link' to='/signin'> Войти</Link>
+            <Link className='registration__link' to='/signin'> Войти</Link>
           </p>
         </div>
       </form>
