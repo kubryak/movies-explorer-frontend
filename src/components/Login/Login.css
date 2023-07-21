@@ -100,7 +100,7 @@
   }
 
   .authorization__buttons {
-    margin-top: 159px;
+    margin-top: 150px;
   }
 
 }
@@ -109,6 +109,11 @@
   .authorization {
     margin-top: 56px;
     padding: 0 30px 80px;
+    align-items: center;
+  }
+
+  .authorization__title {
+    margin: 0 0 80px 0;
   }
 
   .authorization__logo {
@@ -117,7 +122,7 @@
   }
 
   .authorization__buttons {
-    margin-top: 247px;
+    margin-top: 239px;
     font-size: 12px;
   }
 

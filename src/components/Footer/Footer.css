@@ -44,6 +44,14 @@
   text-align: right;
 }
 
+.footer__link {
+  color: #000;
+}
+
+.footer__link:visited {
+  color: #000;
+}
+
 @media screen and (max-width: 768px) {
   .footer {
     max-width: 768px;
@@ -56,6 +64,7 @@
 @media screen and (max-width: 320px) {
   .footer {
     max-width: 320px;
+    padding-top: 74px;
     padding-right: 10px;
     padding-left: 10px;
     background-color: #fff;

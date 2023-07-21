@@ -2,7 +2,7 @@ import './Footer.css';
 
 export default function Footer() {
   return (
-    <section className='footer' id='footer'>
+    <footer className='footer' id='footer'>
       <p className='footer__authors'>
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
@@ -31,6 +31,6 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-    </section>
+    </footer>
   );
 };

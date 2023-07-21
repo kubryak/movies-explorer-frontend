@@ -22,6 +22,10 @@
   text-decoration: none;
 }
 
+.nav-tab__link:visited {
+  color: #000;
+}
+
 @media screen and (max-width: 360px) {
   .nav-tab__list {
     gap: 6px;

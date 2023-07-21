@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';
 import '../Movies/Movies.css'
 import './SavedMovies.css';
-import Header from '../Header/Header';
+import moviesDB from '../../utils/moviesDB';
 
 export default function SavedMovies({ cards }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,14 +16,14 @@ export default function SavedMovies({ cards }) {
   }, []);
 
   return (
-    <>
-      <section className='movies'>
-        <SearchForm />
+    <main className='movies'>
+      <SearchForm />
+      <section>
         {
-          isLoading ? <Preloader /> : <MoviesCardList cards={cards} />
+          isLoading ? <Preloader /> : <MoviesCardList cards={moviesDB} />
         }
-        <div className='movies__devider' />
+        <div className='saved-movies__devider' />
       </section>
-    </>
+    </main>
   );
 };

@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';
 import './Movies.css';
-import Header from '../Header/Header';
+import moviesDB from '../../utils/moviesDB';
 
-export default function Movies({ cards }) {
+export default function Movies() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -16,14 +15,15 @@ export default function Movies({ cards }) {
   }, []);
 
   return (
-    <>
-      <main className='movies'>
-        <SearchForm />
+    <main className='movies'>
+      <SearchForm />
+      <section>
         {
-          isLoading ? <Preloader /> : <MoviesCardList cards={cards} />
+          isLoading ?
+            <Preloader /> : <MoviesCardList cards={moviesDB} />
         }
         <button type='button' className='button movies__load-movies'>Ещё</button>
-      </main>
-    </>
+      </section>
+    </main>
   );
 };

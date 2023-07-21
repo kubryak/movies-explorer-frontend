@@ -37,6 +37,11 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  color: #000;
+}
+
+.portfolio__link:visited {
+  color: #000;
 }
 
 .portfolio__link-title {

@@ -96,7 +96,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 835px) {
   .techs__list {
     display: grid;
     grid-template-columns: 1fr 1fr;

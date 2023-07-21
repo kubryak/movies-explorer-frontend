@@ -8,20 +8,20 @@ export default function Profile() {
 
   const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidation();
 
-  const { email, password, name } = values;
+  const { email, name } = values;
 
   useEffect(() => {
-    if (!email && !password && !name) {
+    if (!email && !name) {
       setIsValid(false)
     }
-  }, [email, password, name])
+  }, [email, name])
 
   const handleSubmit = (e) => {
     e.preventDefault();
   }
 
   return (
-    <>
+    <main>
       <section className='profile'>
         <h1 className='profile__title'>Привет, Виталий!</h1>
         <form className='profile__form'>
@@ -65,6 +65,6 @@ export default function Profile() {
           </div>
         </form>
       </section>
-    </>
+    </main>
   );
 };
