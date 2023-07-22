@@ -54,6 +54,10 @@
   line-height: normal;
 }
 
+.about-me__link:visited {
+  color: #000;
+}
+
 .about-me__image {
   width: 270px;
   height: 327px;
