@@ -5,10 +5,18 @@ export function useFormAndValidation() {
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(true);
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
+
+    if (name === 'email' && !emailRegex.test(value)) {
+      setErrors({ ...errors, [name]: 'Некорректный адрес электронной почты' });
+    } else {
+      setErrors({ ...errors, [name]: e.target.validationMessage });
+    }
+
     setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: e.target.validationMessage });
     setIsValid(e.target.closest('form').checkValidity());
   };
 

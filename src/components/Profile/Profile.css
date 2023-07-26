@@ -84,6 +84,19 @@
   line-height: normal;
 }
 
+.profile__button_type_disabled {
+  margin: 16px 0 0;
+  padding: 0;
+  max-width: fit-content;
+  border: none;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  color: gray;
+  cursor: default;
+}
+
 .profile__button_type_exit {
   color: #ee3465;
   text-decoration: none;

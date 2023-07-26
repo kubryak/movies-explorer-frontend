@@ -1,14 +1,19 @@
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
-import Header from '../Header/Header';
 import './Profile.css';
 
-export default function Profile() {
+export default function Profile({ user, editUser, onLogOut, isError, setError }) {
 
-  const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidation();
+  const location = useLocation();
 
-  const { email, name } = values;
+  const { values, handleChange, errors, isValid, setIsValid, setValues } = useFormAndValidation();
+
+  useEffect(() => {
+    setValues({ name: user.name, email: user.email })
+  }, [])
+
+  const { name, email } = values;
 
   useEffect(() => {
     if (!email && !name) {
@@ -16,15 +21,22 @@ export default function Profile() {
     }
   }, [email, name])
 
+  useEffect(() => {
+    setError('')
+  }, [location.pathname])
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    editUser(values.name, values.email)
+    setIsValid(false)
+    setError('');
   }
 
   return (
     <main>
       <section className='profile'>
-        <h1 className='profile__title'>Привет, Виталий!</h1>
-        <form className='profile__form'>
+        <h1 className='profile__title'>Привет, {user.name}</h1>
+        <form className='profile__form' onSubmit={handleSubmit} noValidate>
           <div className='profile__input-container'>
             <label className='profile__input-label'>Имя</label>
             <input
@@ -48,20 +60,20 @@ export default function Profile() {
               type='email'
               className='profile__input'
               name='email'
-              value={email || ''}
+              value={values.email || ''}
               onChange={handleChange}
               required
               placeholder='E-mail'
             />
           </div>
-          <span className="input-error input-error_active">
-            {errors.email}
-          </span>
           <div className='profile__buttons'>
-            <button type='submit' className='link profile__button profile__button_type_edit'>Редактировать</button>
-            <NavLink className='profile__button profile__button_type_exit' to='/'>
+            <span className="button-error button-error_active">
+              {isError}
+            </span>
+            <button type='submit' className={!isValid ? 'profile__button_type_disabled' : 'link profile__button profile__button_type_edit'} disabled={!isValid}>Редактировать</button>
+            <button className='profile__button profile__button_type_exit' onClick={onLogOut} to='/'>
               Выйти из аккаунта
-            </NavLink>
+            </button>
           </div>
         </form>
       </section>

@@ -32,7 +32,7 @@ export default function SearchForm() {
             required
             placeholder='Фильм'
           />
-          <button type='button' className={!isValid ? 'search__button_type_disabled' : 'button search__button'}>
+          <button type='button' className={!isValid ? 'search__button_type_disabled' : 'button search__button'} disabled={!isValid}>
             Поиск
           </button>
         </div>

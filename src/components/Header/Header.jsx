@@ -4,40 +4,14 @@ import Logo from '../Logo/Logo';
 import Popup from '../Popup/Popup';
 import './Header.css';
 
-export default function Header() {
-
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
-
-  function handlePopupClick() {
-    setIsOpen(true);
-  }
-
-  function closePopup() {
-    setIsOpen(false);
-  }
-
-  useEffect(() => {
-    const close = (e) => {
-      if (e.key === 'Escape') {
-        closePopup()
-      }
-    }
-    if (isOpen) {
-      document.addEventListener('keydown', close)
-    }
-    return () => {
-      document.removeEventListener('keydown', close)
-    }
-  }, [isOpen])
-
+export default function Header({ isLoggedIn, onClose, isOpen, onPopupClick }) {
   return (
     <>
       <header className='header'>
         <Logo />
-        <Navigation isLoggedIn={isLoggedIn} onClose={handlePopupClick} />
+        <Navigation isLoggedIn={isLoggedIn} onClick={onPopupClick} />
       </header>
-      <Popup isOpen={isOpen} onClose={closePopup} />
+      <Popup isOpen={isOpen} onClose={onClose} />
     </>
   );
 };

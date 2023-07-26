@@ -1,10 +1,8 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AccountIcon from '../../images/nav-auth__acc-image.svg';
 import './Popup.css';
 
 export default function Popup({ isOpen, onClose }) {
-  const location = useLocation();
-
   function handleClickClose(evt) {
     if (evt.target.classList.contains('popup_opened')) {
       onClose();

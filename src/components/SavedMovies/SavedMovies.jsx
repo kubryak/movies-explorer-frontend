@@ -6,15 +6,7 @@ import '../Movies/Movies.css'
 import './SavedMovies.css';
 import moviesDB from '../../utils/moviesDB';
 
-export default function SavedMovies({ cards }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-  }, []);
-
+export default function SavedMovies({ isLoading }) {
   return (
     <main className='movies'>
       <SearchForm />
