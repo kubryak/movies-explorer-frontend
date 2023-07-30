@@ -68,7 +68,7 @@ export default function Navigation({ isLoggedIn, onClick }) {
                 <li className='nav-auth__list-item'>
                   <NavLink className='link nav-auth__link nav-auth__link_type_acc-btn' to='/profile'>
                     Аккаунт
-                    <img className='nav-auth__acc-image' src={AccountIcon} alt='Иконка аккаунта'/>
+                    <img className='nav-auth__acc-image' src={AccountIcon} alt='Иконка аккаунта' />
                   </NavLink>
                 </li>
               </ul>

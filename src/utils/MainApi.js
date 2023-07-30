@@ -47,7 +47,7 @@ class MainApi {
 
   addMovies(item) {
     return fetch(this._baseUrl + '/movies', {
-      method: 'GET',
+      method: 'POST',
       credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
@@ -56,16 +56,16 @@ class MainApi {
         duration: item.duration ? item.duration : 'Не указана длительность фильма',
         year: item.year ? item.year : 'Не указан год выпуска фильма',
         description: item.description ? item.description : 'Не указано описание фильма',
-        image: `https://api.nomoreparties.co${item.image.url}`,
+        image: `https://api.nomoreparties.co/${item.image.url}`,
         trailerLink: item.trailerLink ? item.trailerLink : 'Не указана ссылка на трейлер фильма',
-        thumbnail: `https://api.nomoreparties.co${item.image.formats.thumbnail.url}`,
+        thumbnail: `https://api.nomoreparties.co/${item.image.formats.thumbnail.url}`,
         owner: item.owner,
         movieId: item.id,
-        nameRu: item.nameRu ? item.nameRu : 'Не указано название фильма на русском языке',
-        nameEn: item.nameEn ? item.nameEn : 'Не указано название фильма на английском языке',
+        nameRU: item.nameRU ? item.nameRU : 'Не указано название фильма на русском языке',
+        nameEN: item.nameEN ? item.nameEN : 'Не указано название фильма на английском языке',
       })
     })
-      .then((res) => this._checkApi())
+      .then((res) => this._checkApi(res))
   }
 
   deleteMovies(movieId) {
@@ -79,8 +79,8 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  // baseUrl: 'https://api.qbrk.nomoreparties.sbs',
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.qbrk.nomoreparties.sbs',
+  // baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
   }

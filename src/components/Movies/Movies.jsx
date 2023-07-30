@@ -5,7 +5,7 @@ import './Movies.css';
 import { useState, useEffect } from 'react';
 import { MEDIUM_SCREEN, LARGE_SCREEN, } from '../../utils/screenConstants';
 
-export default function Movies({ isLoading, allMovies, movieError, setMovieError }) {
+export default function Movies({ isLoading, allMovies, movieError, setMovieError, likeMovie, userMovies }) {
   const [searchResult, setSearchResult] = useState([]);
   const [valueCheckbox, setValueCheckbox] = useState(false);
   const [moviesToShow, setMoviesToShow] = useState(12);
@@ -113,7 +113,14 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
         valueCheckbox={valueCheckbox}
       />
       <section>
-        {isLoading ? <Preloader /> : <MoviesCardList movies={searchResult.slice(0, moviesToShow)} />}
+        {isLoading ?
+          <Preloader /> :
+          <MoviesCardList
+            movies={searchResult.slice(0, moviesToShow)}
+            likeMovie={likeMovie}
+            userMovies={userMovies}
+          />
+        }
         <p className='button-error button-error_active'>{movieError ? movieError : ''}</p>
         <p className='button-error button-error_active'>{notFound ? notFound : ''}</p>
         {!isAllMoviesShown && (

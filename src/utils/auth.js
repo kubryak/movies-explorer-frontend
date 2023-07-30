@@ -1,5 +1,5 @@
-// export const BASE_URL = 'https://api.qbrk.nomoreparties.sbs';
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.qbrk.nomoreparties.sbs';
+// export const BASE_URL = 'http://localhost:3000';
 
 function checkApi(res) {
   if (res.ok) {

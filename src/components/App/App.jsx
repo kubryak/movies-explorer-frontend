@@ -32,10 +32,8 @@ export default function App() {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   const [currentUser, setCurrentUser] = useState({ email: '', name: '' });
-  const [movies, setMovies] = useState([]);
+  const [userMovies, setUserMovies] = useState([]);
   const [allMovies, setAllMovies] = useState([]);
-
-  const [cards, setCards] = useState([]);
 
   const [isError, setError] = useState('');
   const [movieError, setMovieError] = useState('');
@@ -47,10 +45,7 @@ export default function App() {
     if (jwt) setToken(jwt)
     mainApi.getUserInfo()
       .then((res) => {
-        setCurrentUser({
-          name: res.name,
-          email: res.email
-        });
+        setCurrentUser(res);
       })
       .catch(err => console.log(err));
   }, [isLoggedIn])
@@ -60,7 +55,7 @@ export default function App() {
       setIsLoading(true)
       Promise.all([mainApi.getMovies(), moviesApi.getAllMovies()])
         .then(([movies, allMovies]) => {
-          setMovies(movies)
+          setUserMovies(movies)
           setAllMovies(allMovies)
           setMovieError(false);
         })
@@ -71,23 +66,6 @@ export default function App() {
         .finally(() => setIsLoading(false))
     }
   }, [isLoggedIn])
-
-  const likeMovie = (movieData) => {
-    mainApi.addMovies(movieData)
-      .then((movie) => {
-        setCards([movie, ...cards])
-        console.log('add', movieData)
-      })
-      .catch((err) => console.log(err))
-  };
-
-  function handlePopupClick() {
-    setPopupOpen(true);
-  }
-
-  function closePopup() {
-    setPopupOpen(false);
-  }
 
   useEffect(() => {
     const close = (e) => {
@@ -102,6 +80,44 @@ export default function App() {
       document.removeEventListener('keydown', close)
     }
   }, [isPopupOpen])
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('userId');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((data) => {
+          if (data) {
+            setIsLoggedIn(true);
+            navigate('/movies', { replace: true })
+          }
+        })
+        .catch(err => console.log(err))
+    }
+  }, [token])
+
+  function likeMovie(movieData) {
+    mainApi.addMovies(movieData)
+      .then((movie) => {
+        setUserMovies([movie, ...userMovies])
+      })
+      .catch((err) => console.log(err))
+  };
+
+  function deleteMovie(movieData) {
+    mainApi.deleteMovies(movieData._id)
+      .then(() => {
+        setUserMovies((cards) => cards.filter((c) => c._id !== movieData._id))
+      })
+      .catch(err => console.log(err))
+  }
+
+  function handlePopupClick() {
+    setPopupOpen(true);
+  }
+
+  function closePopup() {
+    setPopupOpen(false);
+  }
 
   function registerUser({ email, password, name }) {
     auth.signUp(email, password, name)
@@ -148,20 +164,6 @@ export default function App() {
     navigate('/');
   }
 
-  useEffect(() => {
-    const jwt = localStorage.getItem('userId');
-    if (jwt) {
-      auth.checkToken(jwt)
-        .then((data) => {
-          if (data) {
-            setIsLoggedIn(true);
-            navigate('/movies', { replace: true })
-          }
-        })
-        .catch(err => console.log(err))
-    }
-  }, [token])
-
   function editUser(name, email) {
     mainApi.setUserInfo(name, email)
       .then((res) => {
@@ -195,10 +197,10 @@ export default function App() {
                 isLoggedIn={isLoggedIn}
                 isLoading={isLoading}
                 allMovies={allMovies}
-                likeMovie={likeMovie}
-                cards={cards}
                 movieError={movieError}
                 setMovieError={setMovieError}
+                likeMovie={likeMovie}
+                userMovies={userMovies}
               />}
           />
           <Route path='/saved-movies'
@@ -206,6 +208,8 @@ export default function App() {
               <ProtectedRouteElement element={SavedMovies}
                 isLoggedIn={isLoggedIn}
                 isLoading={isLoading}
+                cards={userMovies}
+                deleteMovie={deleteMovie}
               />}
           />
           <Route path='/profile'

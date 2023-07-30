@@ -7,7 +7,7 @@ export default function SearchForm({ valueCheckbox, setValueCheckbox, searchMovi
 
   const [savedSearch, setSavedSearch] = useState('');
 
-  const { values, handleChange, errors, isValid, setIsValid, setValues } = useFormAndValidation();
+  const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidation();
 
   const { film } = values;
 
