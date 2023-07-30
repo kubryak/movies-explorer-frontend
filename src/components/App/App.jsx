@@ -10,7 +10,6 @@ import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 import './App.css';
 
@@ -18,10 +17,9 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import ProtectedRouteElement from '../ProtectedRouteElement/ProtectedRouteElement.jsx';
 import * as auth from '../../utils/auth.js';
 import { mainApi } from '../../utils/MainApi.js';
+import { moviesApi } from '../../utils/MoviesApi.js';
 
 export default function App() {
-  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false);
-
   const path = useLocation().pathname;
   const headerPaths = ['/', '/movies', '/saved-movies', '/profile'];
   const footerPaths = ['/', '/movies', '/saved-movies'];
@@ -30,42 +28,65 @@ export default function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState('');
-  const [isRegister, setRegister] = useState(false);
+
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
   const [currentUser, setCurrentUser] = useState({ email: '', name: '' });
+  const [movies, setMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
+
+  const [cards, setCards] = useState([]);
 
   const [isError, setError] = useState('');
+  const [movieError, setMovieError] = useState('');
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const jwt = localStorage.getItem('userId');
-    if (jwt)
-      mainApi.getUserInfo()
-        .then((res) => {
-          setCurrentUser({
-            name: res.name,
-            email: res.email
-          });
-        })
-        .catch(err => console.log(err));
+    if (jwt) setToken(jwt)
+    mainApi.getUserInfo()
+      .then((res) => {
+        setCurrentUser({
+          name: res.name,
+          email: res.email
+        });
+      })
+      .catch(err => console.log(err));
   }, [isLoggedIn])
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      setIsLoading(true)
+      Promise.all([mainApi.getMovies(), moviesApi.getAllMovies()])
+        .then(([movies, allMovies]) => {
+          setMovies(movies)
+          setAllMovies(allMovies)
+          setMovieError(false);
+        })
+        .catch((err) => {
+          console.log(err)
+          setMovieError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен')
+        })
+        .finally(() => setIsLoading(false))
+    }
+  }, [isLoggedIn])
 
-
-  const [isPopupOpen, setPopupOpen] = useState(false);
+  const likeMovie = (movieData) => {
+    mainApi.addMovies(movieData)
+      .then((movie) => {
+        setCards([movie, ...cards])
+        console.log('add', movieData)
+      })
+      .catch((err) => console.log(err))
+  };
 
   function handlePopupClick() {
     setPopupOpen(true);
   }
 
-  function handleInfoTooltipClick() {
-    setInfoTooltipPopupOpen(true);
-  }
-
   function closePopup() {
     setPopupOpen(false);
-    setInfoTooltipPopupOpen(false);
   }
 
   useEffect(() => {
@@ -122,6 +143,8 @@ export default function App() {
   function logOutUser() {
     auth.signOut();
     setIsLoggedIn(false);
+    localStorage.removeItem('searchResult')
+    localStorage.removeItem('lastSearch')
     navigate('/');
   }
 
@@ -148,29 +171,10 @@ export default function App() {
         });
       })
       .catch(err => {
-        console.log(err)
-        setError(err)
+        console.log(err);
+        setError(err);
       });
   }
-
-  // useEffect(() => {
-  //   const handleTokenCheck = () => {
-  //     const jwt = localStorage.getItem('userId');
-  //     if (jwt) {
-  //       auth.checkToken(jwt)
-  //         .then((data) => {
-  //           if (data) {
-  //             setIsLoggedIn(true);
-  //             navigate('/', { replace: true })
-  //           }
-  //         })
-  //         .catch(err => console.log(err))
-  //     }
-  //   }
-  //   handleTokenCheck();
-  // }, [token])
-
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -190,6 +194,11 @@ export default function App() {
               <ProtectedRouteElement element={Movies}
                 isLoggedIn={isLoggedIn}
                 isLoading={isLoading}
+                allMovies={allMovies}
+                likeMovie={likeMovie}
+                cards={cards}
+                movieError={movieError}
+                setMovieError={setMovieError}
               />}
           />
           <Route path='/saved-movies'
@@ -220,7 +229,7 @@ export default function App() {
           <Route path='/signup' element={
             <Register
               onRegister={registerUser}
-              onInfoTooltip={handleInfoTooltipClick}
+
               isError={isError}
               setError={setError}
             />}
@@ -230,12 +239,6 @@ export default function App() {
         {footerPaths.includes(path) && (
           <Footer />
         )}
-        <InfoTooltip
-          name={'info-tooltip'}
-          isOpen={isInfoTooltipPopupOpen}
-          onClose={closePopup}
-          isRegister={isRegister}
-        />
       </div>
     </CurrentUserContext.Provider>
   );

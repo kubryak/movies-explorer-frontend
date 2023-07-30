@@ -8,6 +8,11 @@
   position: relative;
 }
 
+.movies-card__link {
+  display: flex;
+  flex-direction: column;
+}
+
 .movies-card:nth-last-of-type(-n+3) {
   margin-bottom: 0px;
 }
@@ -87,6 +92,7 @@
   margin: 0 14px 0 0;
   padding: 4px 0;
   width: 52px;
+  height: 10px;
   text-align: center;
   font-size: 11px;
   font-weight: 400;

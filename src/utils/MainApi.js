@@ -42,7 +42,7 @@ class MainApi {
       credentials: 'include',
       headers: this._headers
     })
-      .then((res) => this._checkApi())
+      .then((res) => this._checkApi(res))
   }
 
   addMovies(item) {

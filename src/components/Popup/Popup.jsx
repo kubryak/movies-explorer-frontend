@@ -8,15 +8,16 @@ export default function Popup({ isOpen, onClose }) {
       onClose();
     }
   }
+
   return (
     <section className={`popup ${isOpen && ('popup_opened')}`} onMouseDown={handleClickClose}>
       <nav className='popup__nav'>
         <button type='button' className='button popup__close-btn' onClick={onClose} />
         <ul className='popup__list'>
-          <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/">Главная</NavLink></li>
-          <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/movies">Фильмы</NavLink></li>
-          <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/saved-movies">Сохраненные фильмы</NavLink></li>
-          <NavLink className='popup__link popup__link_type_acc-btn' to='/profile'>
+          <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/" onClick={onClose}>Главная</NavLink></li>
+          <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/movies" onClick={onClose}>Фильмы</NavLink></li>
+          <li className='popup__list-item'><NavLink className={({ isActive }) => isActive ? 'link popup__link popup__link_type_active' : 'link popup__link'} to="/saved-movies" onClick={onClose}>Сохраненные фильмы</NavLink></li>
+          <NavLink className='popup__link popup__link_type_acc-btn' to='/profile' onClick={onClose}>
             Аккаунт
             <img className='popup__acc-image' src={AccountIcon} alt='Иконка аккаунта' />
           </NavLink>

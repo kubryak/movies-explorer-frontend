@@ -75,6 +75,11 @@
   line-height: normal;
 }
 
+.authorization__button_type_disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
+}
+
 .authorization__text {
   margin: 16px 0 0;
   text-align: center;

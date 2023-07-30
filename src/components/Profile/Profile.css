@@ -66,6 +66,11 @@
   box-shadow: 0 1px 0 rgba(43, 224, 128, 1);
 }
 
+.profile__input:disabled {
+  background-color: transparent;
+  color: #a0a0a0;
+}
+
 .profile__buttons {
   display: flex;
   flex-direction: column;
@@ -76,11 +81,21 @@
 .profile__button {
   margin: 16px 0 0;
   padding: 0;
-  max-width: fit-content;
   border: none;
   background-color: transparent;
   font-size: 13px;
   font-weight: 400;
+  line-height: normal;
+}
+
+.profile__button_type_save {
+  width: 100%;
+  border-radius: 3px;
+  background: #2be080;
+  padding: 14px 0 15px;
+  border: none;
+  color: #fff;
+  font-weight: 500;
   line-height: normal;
 }
 

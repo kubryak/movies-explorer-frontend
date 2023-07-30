@@ -35,7 +35,7 @@ export default function Register({ onRegister, setError, isError }) {
           <Logo />
         </div>
         <h1 className='registration__title'>Добро пожаловать!</h1>
-        <form className='registration__form' onSubmit={handleSubmit}>
+        <form className='registration__form' onSubmit={handleSubmit} noValidate>
           <div className='registration__input-container'>
             <label className='registration__input-label'>Имя</label>
             <input
@@ -90,7 +90,7 @@ export default function Register({ onRegister, setError, isError }) {
             <span className="button-error button-error_active">
               {isError}
             </span>
-            <button disabled={!isValid} type='submit' className='button registration__button'>Зарегистрироваться</button>
+            <button type='submit' className={!isValid ? 'registration__button registration__button_type_disabled' : 'button registration__button'} disabled={!isValid}>Зарегистрироваться</button>
             <p className='registration__text'>Уже зарегистрированы?
               <Link className='registration__link' to='/signin'> Войти</Link>
             </p>

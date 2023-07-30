@@ -72,7 +72,7 @@ export default function Login({ onLogin, isError, setError }) {
             <span className="button-error button-error_active">
               {isError}
             </span>
-            <button type='submit' className='button authorization__button'>Войти</button>
+            <button type='submit' className={!isValid ? 'authorization__button authorization__button_type_disabled' : 'button authorization__button'} disabled={!isValid}>Войти</button>
             <p className='authorization__text'>Еще не зарегистрированы?
               <Link className='authorization__link' to='/signup'> Регистрация</Link>
             </p>
