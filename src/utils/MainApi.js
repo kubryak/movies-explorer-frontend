@@ -79,8 +79,8 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  // baseUrl: 'https://api.qbrk.nomoreparties.sbs',
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.qbrk.nomoreparties.sbs',
+  // baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
   }
