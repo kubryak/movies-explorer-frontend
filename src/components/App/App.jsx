@@ -47,7 +47,7 @@ export default function App() {
       .then((res) => {
         setCurrentUser(res);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }, [isLoggedIn])
 
   useEffect(() => {
@@ -95,12 +95,17 @@ export default function App() {
     }
   }, [token])
 
-  function likeMovie(movieData) {
+  function likeMovie(movieData, setIsLikedCallback) {
     mainApi.addMovies(movieData)
       .then((movie) => {
         setUserMovies([movie, ...userMovies])
+        setIsLikedCallback(true)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        setIsLikedCallback(false)
+      })
+
   };
 
   function deleteMovie(movieData) {
@@ -201,6 +206,7 @@ export default function App() {
                 setMovieError={setMovieError}
                 likeMovie={likeMovie}
                 userMovies={userMovies}
+                deleteMovie={deleteMovie}
               />}
           />
           <Route path='/saved-movies'
@@ -232,7 +238,6 @@ export default function App() {
           <Route path='/signup' element={
             <Register
               onRegister={registerUser}
-
               isError={isError}
               setError={setError}
             />}

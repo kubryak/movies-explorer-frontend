@@ -5,7 +5,7 @@ import './Movies.css';
 import { useState, useEffect } from 'react';
 import { MEDIUM_SCREEN, LARGE_SCREEN, } from '../../utils/screenConstants';
 
-export default function Movies({ isLoading, allMovies, movieError, setMovieError, likeMovie, userMovies }) {
+export default function Movies({ isLoading, allMovies, movieError, setMovieError, likeMovie, userMovies, deleteMovie }) {
   const [searchResult, setSearchResult] = useState([]);
   const [valueCheckbox, setValueCheckbox] = useState(false);
   const [moviesToShow, setMoviesToShow] = useState(12);
@@ -22,7 +22,7 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
       setNotFound('');
     }
   }, [valueCheckbox]);
-  console.log(localStorage.getItem('valueCheckbox'))
+
   useEffect(() => {
     const savedResult = localStorage.getItem('searchResult');
     if (savedResult) {
@@ -119,6 +119,7 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
             movies={searchResult.slice(0, moviesToShow)}
             likeMovie={likeMovie}
             userMovies={userMovies}
+            deleteMovie={deleteMovie}
           />
         }
         <p className='button-error button-error_active'>{movieError ? movieError : ''}</p>

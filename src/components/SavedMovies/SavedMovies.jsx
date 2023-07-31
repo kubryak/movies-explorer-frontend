@@ -9,6 +9,8 @@ export default function SavedMovies({ isLoading, cards, deleteMovie }) {
   const [valueCheckbox, setValueCheckbox] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [notFound, setNotFound] = useState('');
+  const [lastSearch, setLastSearch] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
   function filterMovies() {
     if (valueCheckbox) {
@@ -24,28 +26,43 @@ export default function SavedMovies({ isLoading, cards, deleteMovie }) {
     if (valueCheckbox) {
       filterMovies();
     } else {
-      setSearchResult(cards);
-      setNotFound('')
+      if (lastSearch.length === 0) {
+        setSearchResult(cards);
+      } else {
+        setSearchResult(lastSearch);
+      }
+      setNotFound('');
     }
-  }, [valueCheckbox, cards]);
+  }, [valueCheckbox, lastSearch]);
+
+  useEffect(() => {
+    searchMovies(inputValue)
+  }, [deleteMovie])
 
   function searchMovies(query) {
-    const result = cards.filter(
-      (movie) =>
-        typeof movie.nameRU === 'string' &&
-        movie.nameRU.toLowerCase().includes(query.film.toLowerCase())
-    );
-    if (result.length === 0) {
-      setSearchResult([]);
-      setNotFound('Ничего не найдено')
-    } else {
-      if (valueCheckbox) {
-        const shortFilm = result.filter((movie) => movie.duration <= 40);
-        setSearchResult(shortFilm);
+    try {
+      const result = cards.filter(
+        (movie) =>
+          typeof movie.nameRU === 'string' &&
+          movie.nameRU.toLowerCase().includes(query.film.toLowerCase())
+      );
+
+      if (result.length === 0) {
+        setSearchResult([]);
+        setNotFound('Ничего не найдено');
       } else {
-        setSearchResult(result);
+        if (valueCheckbox) {
+          const shortFilm = result.filter((movie) => movie.duration <= 40);
+          setSearchResult(shortFilm);
+        } else {
+          setSearchResult(result);
+        }
+        setNotFound('');
+        setLastSearch(result);
+        setInputValue(query);
       }
-      setNotFound('')
+    } catch (error) {
+      setSearchResult(cards);
     }
   }
 

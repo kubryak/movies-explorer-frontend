@@ -19,8 +19,13 @@ export default function MoviesCard({ card, likeMovie, deleteMovie, userMovies })
 
   const handleButtonClick = () => {
     if (location.pathname === '/movies') {
-      likeMovie(card);
-      setIsLiked(true)
+      if (isLiked) {
+        const movieIdToDelete = userMovies.find((savedMovie) => savedMovie.movieId === card.id);
+        deleteMovie(movieIdToDelete);
+      } else {
+        likeMovie(card, setIsLiked);
+      }
+      setIsLiked(!isLiked); 
     } else if (location.pathname === '/saved-movies') {
       deleteMovie(card);
     }
@@ -34,7 +39,6 @@ export default function MoviesCard({ card, likeMovie, deleteMovie, userMovies })
       <button type='button'
         className={location.pathname === '/saved-movies' ? 'movies-card__delete' : isLiked ? 'movies-card__like_type_active' : 'button movies-card__like'}
         onClick={handleButtonClick}
-        disabled={isLiked}
       />
       <div className='movies-card__info'>
         <h2 className='movies-card__title'>{card.nameRU}</h2>
