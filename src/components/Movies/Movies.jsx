@@ -93,10 +93,10 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
       if (valueCheckbox) {
         const shortFilm = result.filter((movie) => movie.duration <= 40);
         setSearchResult(shortFilm);
-        setPreviousSearch(result)
       } else {
         setSearchResult(result);
       }
+      setPreviousSearch(result)
       const screenWidth = window.innerWidth;
       updateMoviesToShow(screenWidth)
       setNotFound('')

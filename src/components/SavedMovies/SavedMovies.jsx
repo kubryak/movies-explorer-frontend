@@ -12,22 +12,6 @@ export default function SavedMovies({ isLoading, cards, deleteMovie }) {
   const [lastSearch, setLastSearch] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
-  function filterMovies() {
-    if (valueCheckbox) {
-      if (lastSearch.length === 0) {
-        const shortFilm = cards.filter((movie) => movie.duration <= 40);
-        setSearchResult(shortFilm);
-        setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
-      } else {
-        const shortFilm = lastSearch.filter((movie) => movie.duration <= 40);
-        setSearchResult(shortFilm);
-        setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
-      }
-    } else {
-      setSearchResult(cards)
-    }
-  }
-
   useEffect(() => {
     if (valueCheckbox) {
       filterMovies();
@@ -44,6 +28,22 @@ export default function SavedMovies({ isLoading, cards, deleteMovie }) {
   useEffect(() => {
     searchMovies(inputValue)
   }, [deleteMovie])
+
+  function filterMovies() {
+    if (valueCheckbox) {
+      if (lastSearch.length === 0) {
+        const shortFilm = cards.filter((movie) => movie.duration <= 40);
+        setSearchResult(shortFilm);
+        setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
+      } else {
+        const shortFilm = lastSearch.filter((movie) => movie.duration <= 40);
+        setSearchResult(shortFilm);
+        setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
+      }
+    } else {
+      setSearchResult(cards)
+    }
+  }
 
   function searchMovies(query) {
     try {
