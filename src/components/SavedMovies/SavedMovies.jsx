@@ -14,9 +14,15 @@ export default function SavedMovies({ isLoading, cards, deleteMovie }) {
 
   function filterMovies() {
     if (valueCheckbox) {
-      const shortFilm = cards.filter((movie) => movie.duration <= 40);
-      setSearchResult(shortFilm);
-      setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
+      if (lastSearch.length === 0) {
+        const shortFilm = cards.filter((movie) => movie.duration <= 40);
+        setSearchResult(shortFilm);
+        setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
+      } else {
+        const shortFilm = lastSearch.filter((movie) => movie.duration <= 40);
+        setSearchResult(shortFilm);
+        setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
+      }
     } else {
       setSearchResult(cards)
     }
