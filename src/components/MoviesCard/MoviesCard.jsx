@@ -32,7 +32,7 @@ export default function MoviesCard({ card, likeMovie, deleteMovie, userMovies })
         <img src={location.pathname === '/saved-movies' ? `${card.image}` : `https://api.nomoreparties.co/${card.image.url}`} alt={`Название фильма ${card.nameRU}`} className='movies-card__image' />
       </a>
       <button type='button'
-        className={location.pathname === '/saved-movies' ? 'movies-card__delete' : isLiked ? 'movies-card__like movies-card__like_type_active' : 'button movies-card__like'}
+        className={location.pathname === '/saved-movies' ? 'movies-card__delete' : isLiked ? 'movies-card__like_type_active' : 'button movies-card__like'}
         onClick={handleButtonClick}
         disabled={isLiked}
       />

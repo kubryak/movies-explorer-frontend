@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { useLocation } from 'react-router-dom';
+import { useFormAndValidationWithoutEmail } from '../../hooks/useFormAndValidationWithoutEmail';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 export default function SearchForm({ valueCheckbox, setValueCheckbox, searchMovies }) {
+  const location = useLocation();
 
   const [savedSearch, setSavedSearch] = useState('');
 
-  const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidation();
+  const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidationWithoutEmail();
 
   const { film } = values;
 
@@ -20,9 +22,9 @@ export default function SearchForm({ valueCheckbox, setValueCheckbox, searchMovi
 
   useEffect(() => {
     if (!film) {
-      setIsValid(false)
+      setIsValid(false);
     }
-  }, [film])
+  }, [film]);
 
   function handleCheckboxChange(evt) {
     setValueCheckbox(evt.target.checked)
@@ -30,9 +32,15 @@ export default function SearchForm({ valueCheckbox, setValueCheckbox, searchMovi
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchMovies(values)
-    localStorage.setItem('lastSearch', JSON.stringify(values.film));
+    if (valueCheckbox) {
+      searchMovies(values)
+    } else {
+      searchMovies(values)
+    }
     setIsValid(false)
+    if (location.pathname === '/movies') {
+      localStorage.setItem('lastSearch', JSON.stringify(values.film));
+    }
   }
 
   return (
@@ -43,7 +51,7 @@ export default function SearchForm({ valueCheckbox, setValueCheckbox, searchMovi
             type='text'
             className='search__input'
             name='film'
-            defaultValue={savedSearch}
+            defaultValue={location.pathname === '/movies' ? savedSearch : ''}
             onChange={handleChange}
             required
             placeholder='Введите ключевое слово'

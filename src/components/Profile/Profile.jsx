@@ -1,26 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './Profile.css';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-export default function Profile({ user, editUser, onLogOut, isError, setError }) {
+export default function Profile({ editUser, onLogOut, isError, setError }) {
   const location = useLocation();
 
+  const currentUser = useContext(CurrentUserContext);
+
   const [isEditing, setIsEditing] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const { values, handleChange, errors, isValid, setIsValid, setValues } = useFormAndValidation();
 
-  const { name, email } = values;
-
   useEffect(() => {
-    setValues({ name: user.name, email: user.email });
+    setValues({ name: currentUser.name, email: currentUser.email });
   }, []);
 
   useEffect(() => {
-    if (!email && !name) {
+    if (!errors.name && !errors.email) {
+      setIsValid(true);
+    } else {
       setIsValid(false);
     }
-  }, [email, name]);
+  }, [errors, setIsValid]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setError('');
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      setIsSuccess(false);
+    }
+  }, [isError]);
 
   useEffect(() => {
     setError('');
@@ -29,15 +45,15 @@ export default function Profile({ user, editUser, onLogOut, isError, setError })
   const handleSubmit = (e) => {
     e.preventDefault();
     editUser(values.name, values.email);
-    setIsValid(false);
-    setError('');
-    setIsEditing(false)
+    setIsValid(false)
+    setIsSuccess(true); // Устанавливаем флаг успеха после успешного сохранения
+    setIsEditing(false);
   };
 
   return (
     <main>
       <section className='profile'>
-        <h1 className='profile__title'>Привет, {user.name}</h1>
+        <h1 className='profile__title'>Привет, {currentUser.name}</h1>
         <form className='profile__form' onSubmit={handleSubmit} noValidate>
           <div className='profile__input-container'>
             <label className='profile__input-label'>Имя</label>
@@ -45,7 +61,7 @@ export default function Profile({ user, editUser, onLogOut, isError, setError })
               type='text'
               className='profile__input'
               name='name'
-              value={name || ''}
+              value={values.name || ''}
               onChange={handleChange}
               required
               minLength='2'
@@ -63,21 +79,32 @@ export default function Profile({ user, editUser, onLogOut, isError, setError })
               type='email'
               className='profile__input'
               name='email'
-              value={values.email || ''}
+              value={values.email}
               onChange={handleChange}
               required
               placeholder='E-mail'
               disabled={!isEditing}
             />
           </div>
+          <span className="input-error input-error_active">
+            {errors.email}
+          </span>
           <div className='profile__buttons'>
-            <span className="button-error button-error_active">
-              {isError}
-            </span>
+            {isError && ( // Проверяем isError для отображения ошибки
+              <span className="button-error button-error_active">
+                {isError}
+              </span>
+            )}
+            {isSuccess && !isError && ( // Проверяем isSuccess и отсутствие isError для отображения сообщения об успешном сохранении
+              <span className="button-succsess button-succsess_type_active">
+                Данные профиля успешно изменены!
+              </span>
+            )}
             {isEditing ? (
               <button
                 type='submit'
-                className='button profile__button profile__button_type_save'
+                className={!isValid || (values.name === currentUser.name && values.email === currentUser.email) ? 'profile__button profile__button_type_disabled' : 'button profile__button profile__button_type_save'}
+                disabled={!isValid || (values.name === currentUser.name && values.email === currentUser.email)}
               >
                 Сохранить
               </button>

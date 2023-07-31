@@ -216,7 +216,6 @@ export default function App() {
             element={
               <ProtectedRouteElement element={Profile}
                 isLoggedIn={isLoggedIn}
-                user={currentUser}
                 editUser={editUser}
                 onLogOut={logOutUser}
                 isError={isError}

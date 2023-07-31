@@ -22,7 +22,7 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
       setNotFound('');
     }
   }, [valueCheckbox]);
-
+  console.log(localStorage.getItem('valueCheckbox'))
   useEffect(() => {
     const savedResult = localStorage.getItem('searchResult');
     if (savedResult) {
@@ -48,7 +48,6 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
 
   function filterMovies() {
     if (valueCheckbox) {
-      setPreviousSearch(searchResult)
       const shortFilm = searchResult.filter((movie) => movie.duration <= 40);
       setSearchResult(shortFilm);
       setNotFound(shortFilm.length === 0 ? 'Ничего не найдено' : '')
@@ -75,7 +74,7 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
     } else if (window.innerWidth >= MEDIUM_SCREEN) {
       setMoviesToShow((prevCount) => prevCount + 2);
     } else {
-      setMoviesToShow((prevCount) => prevCount + 1);
+      setMoviesToShow((prevCount) => prevCount + 2);
     }
   }
 
@@ -94,6 +93,7 @@ export default function Movies({ isLoading, allMovies, movieError, setMovieError
       if (valueCheckbox) {
         const shortFilm = result.filter((movie) => movie.duration <= 40);
         setSearchResult(shortFilm);
+        setPreviousSearch(result)
       } else {
         setSearchResult(result);
       }
