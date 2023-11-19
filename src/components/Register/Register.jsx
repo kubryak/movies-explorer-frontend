@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../Logo/Logo';
 import './Register.css';
 
-export default function Register() {
+export default function Register({ onRegister, setError, isError }) {
+
+  const location = useLocation();
 
   const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidation();
 
@@ -16,8 +18,14 @@ export default function Register() {
     }
   }, [email, password, name])
 
+  useEffect(() => {
+    setError('')
+  }, [location.pathname])
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    onRegister(values);
+    setError('');
   }
 
   return (
@@ -27,7 +35,7 @@ export default function Register() {
           <Logo />
         </div>
         <h1 className='registration__title'>Добро пожаловать!</h1>
-        <form className='registration__form'>
+        <form className='registration__form' onSubmit={handleSubmit} noValidate>
           <div className='registration__input-container'>
             <label className='registration__input-label'>Имя</label>
             <input
@@ -79,7 +87,10 @@ export default function Register() {
             <span className='registration__error'></span>
           </div>
           <div className='registration__buttons'>
-            <button type='submit' className='button registration__button'>Зарегистрироваться</button>
+            <span className="button-error button-error_active">
+              {isError}
+            </span>
+            <button type='submit' className={!isValid ? 'registration__button registration__button_type_disabled' : 'button registration__button'} disabled={!isValid}>Зарегистрироваться</button>
             <p className='registration__text'>Уже зарегистрированы?
               <Link className='registration__link' to='/signin'> Войти</Link>
             </p>

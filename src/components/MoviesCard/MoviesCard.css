@@ -8,6 +8,11 @@
   position: relative;
 }
 
+.movies-card__link {
+  display: flex;
+  flex-direction: column;
+}
+
 .movies-card:nth-last-of-type(-n+3) {
   margin-bottom: 0px;
 }
@@ -60,6 +65,13 @@
 }
 
 .movies-card__like_type_active {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 30px;
   background-image: url(../../images/movies-card__liked.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -87,6 +99,7 @@
   margin: 0 14px 0 0;
   padding: 4px 0;
   width: 52px;
+  height: 10px;
   text-align: center;
   font-size: 11px;
   font-weight: 400;
@@ -150,6 +163,10 @@
   .movies-card__like {
     top: 10px;
     right: 10px;
+  }
+
+  .movies-card__delete {
+    opacity: 1;
   }
 
   .movies-card__info {

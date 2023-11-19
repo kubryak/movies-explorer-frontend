@@ -4,7 +4,7 @@ import AccountIcon from '../../images/nav-auth__acc-image.svg';
 import PopupImage from '../../images/nav-auth__acc-image_type_768.svg';
 import './Navigation.css';
 
-export default function Navigation({ isLoggedIn, onClose }) {
+export default function Navigation({ isLoggedIn, onClick }) {
 
   const [showElement, setShowElement] = useState(() => {
     const storedValue = localStorage.getItem('showElement');
@@ -68,13 +68,13 @@ export default function Navigation({ isLoggedIn, onClose }) {
                 <li className='nav-auth__list-item'>
                   <NavLink className='link nav-auth__link nav-auth__link_type_acc-btn' to='/profile'>
                     Аккаунт
-                    <img className='nav-auth__acc-image' src={AccountIcon} alt='Иконка аккаунта'/>
+                    <img className='nav-auth__acc-image' src={AccountIcon} alt='Иконка аккаунта' />
                   </NavLink>
                 </li>
               </ul>
             </nav>
           ) : (
-            <button type='button' className='button nav-auth__popup-button' onClick={onClose}><img className='nav-auth__popup-img' src={PopupImage} alt='Иконка меню' /></button>
+            <button type='button' className='button nav-auth__popup-button' onClick={onClick}><img className='nav-auth__popup-img' src={PopupImage} alt='Иконка меню' /></button>
           )
           }
         </>

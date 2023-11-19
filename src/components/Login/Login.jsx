@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../Logo/Logo';
 import './Login.css';
 
-export default function Login() {
+export default function Login({ onLogin, isError, setError }) {
+
+  const location = useLocation();
 
   const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidation();
 
@@ -16,8 +18,14 @@ export default function Login() {
     }
   }, [email, password])
 
+  useEffect(() => {
+    setError('')
+  }, [location.pathname])
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    onLogin(values)
+    setError('');
   }
 
   return (
@@ -27,7 +35,7 @@ export default function Login() {
           <Logo />
         </div>
         <h1 className='authorization__title'>Рады видеть!</h1>
-        <form className='authorization__form'>
+        <form className='authorization__form' onSubmit={handleSubmit}>
           <div className='authorization__input-container'>
             <label className='authorization__input-label'>E-mail</label>
             <input
@@ -61,7 +69,10 @@ export default function Login() {
             </span>
           </div>
           <div className='authorization__buttons'>
-            <button type='submit' className='button authorization__button'>Войти</button>
+            <span className="button-error button-error_active">
+              {isError}
+            </span>
+            <button type='submit' className={!isValid ? 'authorization__button authorization__button_type_disabled' : 'button authorization__button'} disabled={!isValid}>Войти</button>
             <p className='authorization__text'>Еще не зарегистрированы?
               <Link className='authorization__link' to='/signup'> Регистрация</Link>
             </p>

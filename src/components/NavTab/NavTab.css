@@ -20,6 +20,7 @@
   box-sizing: border-box;
   display: block;
   text-decoration: none;
+  color: #000;
 }
 
 .nav-tab__link:visited {

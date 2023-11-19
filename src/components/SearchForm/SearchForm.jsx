@@ -1,45 +1,72 @@
-import { useEffect } from 'react';
-import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useFormAndValidationWithoutEmail } from '../../hooks/useFormAndValidationWithoutEmail';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-export default function SearchForm() {
+export default function SearchForm({ valueCheckbox, setValueCheckbox, searchMovies }) {
+  const location = useLocation();
 
-  const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidation();
+  const [savedSearch, setSavedSearch] = useState('');
+
+  const { values, handleChange, errors, isValid, setIsValid } = useFormAndValidationWithoutEmail();
 
   const { film } = values;
 
   useEffect(() => {
-    if (!film) {
-      setIsValid(false)
+    const savedSearch = localStorage.getItem('lastSearch');
+    if (savedSearch) {
+      setSavedSearch(JSON.parse(savedSearch))
     }
-  }, [film])
+  }, []);
+
+  useEffect(() => {
+    if (!film) {
+      setIsValid(false);
+    }
+  }, [film]);
+
+  function handleCheckboxChange(evt) {
+    setValueCheckbox(evt.target.checked)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (valueCheckbox) {
+      searchMovies(values)
+    } else {
+      searchMovies(values)
+    }
+    setIsValid(false)
+    if (location.pathname === '/movies') {
+      localStorage.setItem('lastSearch', JSON.stringify(values.film));
+    }
   }
 
   return (
     <section>
-      <form className='search__form'>
+      <form className='search__form' onSubmit={handleSubmit}>
         <div className='search__container'>
           <input
             type='text'
             className='search__input'
             name='film'
-            value={film || ''}
+            defaultValue={location.pathname === '/movies' ? savedSearch : ''}
             onChange={handleChange}
             required
-            placeholder='Фильм'
+            placeholder='Введите ключевое слово'
           />
-          <button type='button' className={!isValid ? 'search__button_type_disabled' : 'button search__button'}>
+          <button type='submit' className={!isValid ? 'search__button_type_disabled' : 'button search__button'} disabled={!isValid}>
             Поиск
           </button>
         </div>
         <span className={isValid ? 'input-error' : 'input-error input-error_active'}>
           {errors.film}
         </span>
-        <FilterCheckbox />
+        <FilterCheckbox
+          value={valueCheckbox}
+          onChange={handleCheckboxChange}
+        />
       </form>
     </section>
   );

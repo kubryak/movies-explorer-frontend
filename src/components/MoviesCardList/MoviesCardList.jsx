@@ -1,14 +1,18 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-export default function MoviesCardList({cards}) {
+export default function MoviesCardList({ movies, likeMovie, deleteMovie, userMovies }) {
   return (
     <section>
       <ul className='movies__list'>
-        {cards.map((card) => (
+        {movies.map((card, index) => (
           <MoviesCard
-            key={card.id}
-            card={card} />
+            key={index}
+            card={card}
+            likeMovie={likeMovie}
+            deleteMovie={deleteMovie}
+            userMovies={userMovies}
+          />
         ))}
       </ul>
     </section>

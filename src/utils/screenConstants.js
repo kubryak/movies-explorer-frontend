@@ -1,0 +1,9 @@
+const SMALL_SCREEN = 320;
+const MEDIUM_SCREEN = 768;
+const LARGE_SCREEN = 1280;
+
+export {
+  SMALL_SCREEN,
+  MEDIUM_SCREEN,
+  LARGE_SCREEN,
+}
